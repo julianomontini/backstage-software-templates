@@ -45,6 +45,10 @@ spec:
       input:
         repoUrl: https://github.com/julianomontini/${{ parameters.component_id }}
         defaultBranch: 'main'
+        allowedHosts:
+          - github.com
+        description: ${{ parameters.component_id }}
+        protectDefaultBranch: false
 
     - id: register
       name: Register
