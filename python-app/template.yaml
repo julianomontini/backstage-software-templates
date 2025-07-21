@@ -43,10 +43,8 @@ spec:
       name: Publish
       action: publish:github
       input:
-        repoUrl: https://github.com/julianomontini/${{ parameters.component_id }}
+        repoUrl: github.com?owner=julianomontini&repo=${{ parameters.component_id }}
         defaultBranch: 'main'
-        allowedHosts:
-          - github.com
         description: ${{ parameters.component_id }}
         protectDefaultBranch: false
 
