@@ -29,4 +29,26 @@ spec:
             - dev
             - prod
 
-  steps: []
+  steps:
+    - id: fetch-base
+      name: Fetch Base
+      action: fetch:template
+      input:
+        url: ./template
+        values:
+          name: ${{ parameters.component_id }}
+          environment: ${{ parameters.env }}
+
+    - id: publish
+      name: Publish
+      action: publish:github
+      input:
+        repoUrl: https://github.com/julianomontini/${{ parameters.component_id }}
+        defaultBranch: 'main'
+
+    - id: register
+      name: Register
+      action: catalog:register
+      input:
+        repoContentsUrl: ${{ steps['publish'].output.repoContentsUrl }}
+        catalogInfoPath: '/catalog-info.yaml'
