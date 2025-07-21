@@ -1,0 +1,11 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: python-app
+  description: Scaffolded python app
+  annotations:
+    github.com/project-slug: julianomontini/${{ values.name }}
+spec:
+  type: service
+  lifecycle: experimental
+  owner: development
